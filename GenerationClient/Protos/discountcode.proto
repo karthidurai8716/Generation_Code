@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "DiscountClient";
+
+service DiscountCode {
+	rpc GenerateCode (GenerateRequest) returns (GenerateResponse);
+	rpc UseGenerateCode (SearchRequest) returns (DiscountModel);
+	rpc GetAllDiscountCode (GetAllRequest) returns (DiscountsResponse);
+	rpc DeleteAllDiscount (DeleteDiscountRequest) returns (ResponseMessage);
+}
+
+message DiscountModel {
+	string discountcode = 1;
+
+}
+message GenerateRequest {
+	uint32 count = 1;
+	bytes length =2;
+
+}
+message GetAllRequest {}
+
+message SearchRequest {
+	string dsiscountCode = 1;
+}
+message DiscountsResponse {
+	repeated DiscountModel discount = 1;
+}
+
+message DeleteDiscountRequest {}
+
+message ResponseMessage {
+	string message = 1;
+}
+message GenerateResponse {
+	bool message = 1;
+}
+
+
+
